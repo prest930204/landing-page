@@ -262,6 +262,8 @@ export default function App() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
+  const [isAppModalOpen, setIsAppModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen font-sans selection:bg-blue-500/30 bg-[#0B1121] text-slate-200">
@@ -344,7 +346,7 @@ export default function App() {
                   초기 가맹점 혜택받기 <ChevronRight className="w-5 h-5" />
                 </button>
                 <a
-                  href="https://diet-manager-admin-production.up.railway.app/"
+                  href="https://app.myfitmanager.co.kr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-transparent hover:bg-slate-800/40 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white px-8 py-4.5 rounded-full text-base sm:text-lg font-bold transition-all active:scale-95 flex items-center justify-center gap-2"
@@ -772,18 +774,227 @@ export default function App() {
              </motion.div>
           </div>
 
-          <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="w-full aspect-video bg-slate-800/40 border border-slate-700 rounded-[2rem] overflow-hidden flex flex-col items-center justify-center shadow-2xl relative">
-              <Megaphone className="w-10 h-10 text-orange-500/50 mb-3" />
-              <p className="text-slate-300 font-semibold mb-1 text-lg">관리자 프로그램 (Web)</p>
-              <p className="text-sm text-slate-500 text-center px-4 break-keep">타겟 고객 추출 및 발송 내역 관리</p>
-              <div className="absolute inset-0 bg-orange-500/5 blur-[80px] pointer-events-none" />
+          <motion.div variants={fadeInUp} initial="initial" whileInView="whileInView" className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Card: Web Admin Mockup representing the user's uploaded image details */}
+            <div 
+              onClick={() => setIsAdminModalOpen(true)}
+              className="w-full aspect-video bg-[#0a0f1d] border border-slate-800 rounded-[2rem] overflow-hidden flex flex-col shadow-2xl relative group cursor-pointer hover:border-blue-500/50 hover:shadow-blue-500/5 transition-all duration-300"
+            >
+              {/* Zoom Hover Overlay */}
+              <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 z-20 backdrop-blur-[2px]">
+                <div className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-lg shadow-blue-500/20 flex items-center gap-1.5 active:scale-95 transition-all">
+                  <span>🔍 클릭해서 고화질 원본 크기로 보기</span>
+                </div>
+              </div>
+
+              {/* Browser Address Bar */}
+              <div className="bg-[#0b1224] border-b border-slate-800/80 px-4 py-2 flex items-center gap-3">
+                <div className="flex gap-1.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                </div>
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs shrink-0 select-none">
+                  <span className="font-bold">←</span>
+                  <span className="font-bold">→</span>
+                  <span className="font-bold">↺</span>
+                </div>
+                <div className="bg-[#141b2e] border border-slate-800/60 rounded-lg py-1 px-3 flex items-center gap-1.5 w-full max-w-xs text-[10px] text-slate-400 font-mono select-none">
+                  <span className="text-emerald-500 text-[8px]">🔒</span>
+                  <span className="text-slate-500 text-[9px] sm:text-[10px]">app.myfitmanager.co.kr</span>
+                </div>
+              </div>
+
+              {/* Simulated Screen Body */}
+              <div className="flex-1 flex overflow-hidden text-[9px] sm:text-[10px] text-slate-300">
+                {/* Left Sidebar Menu */}
+                <div className="w-[18%] bg-[#0d1527] border-r border-slate-800/60 p-2 flex flex-col gap-2 shrink-0 select-none">
+                  <div className="flex items-center gap-1 mb-1">
+                    <Activity className="w-3.5 h-3.5 text-blue-500" />
+                    <div className="w-8 h-1.5 bg-slate-700/60 rounded" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="w-full h-3 bg-blue-600/25 rounded border border-blue-500/10" />
+                    <div className="w-[85%] h-2 bg-slate-800/60 rounded" />
+                    <div className="w-[75%] h-2 bg-slate-800/60 rounded" />
+                    <div className="w-[90%] h-2 bg-slate-800/60 rounded" />
+                    <div className="w-[80%] h-2 bg-slate-800/60 rounded" />
+                  </div>
+                </div>
+
+                {/* Central Members Database Area (Blurred out for confidentiality like screenshot) */}
+                <div className="flex-1 bg-[#101729] p-3 flex flex-col gap-2 overflow-hidden relative">
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-3 bg-slate-700/50 rounded" />
+                    <div className="w-10 h-3 bg-slate-800/70 rounded" />
+                  </div>
+                  {/* Blurred rows */}
+                  <div className="flex-1 flex flex-col gap-1.5 filter blur-[2px] opacity-35 select-none pointer-events-none mt-1">
+                    <div className="h-3.5 bg-slate-800/40 rounded border border-slate-800/30" />
+                    <div className="h-3.5 bg-slate-800/40 rounded border border-slate-800/30" />
+                    <div className="h-3.5 bg-slate-800/40 rounded border border-slate-800/30" />
+                    <div className="h-3.5 bg-slate-800/40 rounded border border-slate-800/30" />
+                    <div className="h-3.5 bg-slate-800/40 rounded border border-slate-800/30" />
+                  </div>
+                </div>
+
+                {/* Right Side Action Panel (Exactly matching your uploaded admin snapshot) */}
+                <div className="w-[38%] bg-white border-l border-slate-200 p-2 sm:p-2.5 flex flex-col justify-between shrink-0 text-slate-800 select-none">
+                  <div>
+                    {/* Header Action Tools */}
+                    <div className="flex items-center justify-between gap-1 mb-2 border-b border-slate-100 pb-2">
+                      <div className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                        <span className="text-[8px] sm:text-[9px] font-black font-sans text-red-500 bg-red-50 py-0.5 px-1 rounded-md shrink-0">28명</span>
+                      </div>
+                      <div className="flex gap-1">
+                        <span className="text-[7px] sm:text-[8px] bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-0.5 px-1 sm:px-1.5 rounded-md cursor-pointer transition-colors shrink-0">일괄 전송</span>
+                        <span className="text-[7px] sm:text-[8px] bg-[#059669] hover:bg-[#047857] text-white font-extrabold py-0.5 px-1 sm:px-1.5 rounded-md cursor-pointer transition-colors shrink-0">SMS 일괄(유료)</span>
+                      </div>
+                    </div>
+
+                    {/* Member Passes Scroll Container mimicking the card detail */}
+                    <div className="flex flex-col gap-1 sm:gap-1.5 max-h-[105px] overflow-hidden">
+                      {/* Pass Card 1 */}
+                      <div className="bg-[#f8fafc] border-l-2 border-red-500 p-1.5 rounded shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[7px] sm:text-[8px]">
+                        <div className="flex justify-between items-start gap-1 mb-0.5">
+                          <span className="font-bold text-slate-900 leading-tight">그룹 수강권 (대표)</span>
+                          <div className="flex gap-0.5 shrink-0 select-none scale-[0.85] origin-right">
+                            <span className="bg-[#e0f2fe] text-[#0369a1] px-0.5 rounded font-black">그룹 D-28</span>
+                            <span className="bg-[#fce7f3] text-[#be185d] px-0.5 rounded font-black">추가 D-28</span>
+                          </div>
+                        </div>
+                        <div className="text-slate-500 leading-tight">12개월 무제한 그룹 PT</div>
+                      </div>
+
+                      {/* Pass Card 2 */}
+                      <div className="bg-[#f8fafc] border-l-2 border-indigo-500 p-1.5 rounded shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[7px] sm:text-[8px]">
+                        <div className="flex justify-between items-start gap-1 mb-0.5">
+                          <span className="font-bold text-slate-900 leading-tight">추가 그룹 수강권</span>
+                          <div className="flex gap-0.5 shrink-0 scale-[0.85] origin-right">
+                            <span className="bg-[#fce7f3] text-[#be185d] px-0.5 rounded font-black">추가 D-28</span>
+                          </div>
+                        </div>
+                        <div className="text-slate-500 leading-tight">12개월 필라테스</div>
+                      </div>
+
+                      {/* Pass Card 3 */}
+                      <div className="bg-[#f8fafc] border-l-2 border-teal-500 p-1.5 rounded shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[7px] sm:text-[8px]">
+                        <div className="flex justify-between items-start gap-1 mb-0.5">
+                          <span className="font-bold text-slate-900 leading-tight">추가 그룹 수강권</span>
+                          <div className="flex gap-0.5 shrink-0 scale-[0.85] origin-right">
+                            <span className="bg-indigo-50 text-indigo-700 px-0.5 rounded font-black">추가 잔여 1회</span>
+                          </div>
+                        </div>
+                        <div className="text-slate-500 leading-tight">그룹PT 체험권 (총 1회)</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Panel Footer text exactly like snapshot */}
+                  <div className="border-t border-slate-100 pt-1.5 text-[6.5px] sm:text-[7px] text-slate-400 font-sans leading-tight">
+                    잔여횟수 8회 이하 또는 잔여기간 30일 이하인 회원 목록입니다.
+                  </div>
+                </div>
+              </div>
+
+              {/* Glass Info Footer Tag */}
+              <div className="absolute inset-x-0 bottom-0 bg-[#0c1224]/85 border-t border-slate-800/80 px-5 py-2.5 flex items-center justify-between select-none">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-blue-500" />
+                  <span className="text-xs text-slate-200 font-bold">관리자 프로그램 (Web)</span>
+                </div>
+                <span className="text-[10px] text-slate-500">실시간 유효 타겟 목록 추출 모드</span>
+              </div>
             </div>
-            <div className="w-full aspect-video bg-slate-800/40 border border-slate-700 rounded-[2rem] overflow-hidden flex flex-col items-center justify-center shadow-2xl relative">
-              <Smartphone className="w-10 h-10 text-yellow-500/50 mb-3" />
-              <p className="text-slate-300 font-semibold mb-1 text-lg">사용자 프로그램 (App)</p>
-              <p className="text-sm text-slate-500 text-center px-4 break-keep">개인화된 재등록 유도 알림 수신</p>
-              <div className="absolute inset-0 bg-yellow-500/5 blur-[80px] pointer-events-none" />
+
+            {/* Right Card: Mobile App / High-Fidelity Notification Receipt Mockup */}
+            <div 
+              onClick={() => setIsAppModalOpen(true)}
+              className="w-full aspect-video bg-[#0a0f1d] border border-slate-800 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-2xl relative group cursor-pointer hover:border-yellow-500/50 hover:shadow-yellow-500/5 transition-all duration-300"
+            >
+              {/* Zoom Hover Overlay */}
+              <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 z-20 backdrop-blur-[2px]">
+                <div className="bg-yellow-500 hover:bg-yellow-400 text-slate-950 px-5 py-2.5 rounded-full text-xs font-bold shadow-lg shadow-yellow-500/20 flex items-center gap-1.5 active:scale-95 transition-all">
+                  <span>🔍 클릭해서 고화질 원본 크기로 보기</span>
+                </div>
+              </div>
+
+              {/* Outer phone mockup structure */}
+              <div className="w-[82%] sm:w-[65%] h-[92%] bg-slate-950 border border-slate-800 rounded-3xl p-2.5 flex flex-col shrink-0 relative overflow-hidden shadow-[0_24px_48px_-12px_rgba(0,0,0,0.8)] select-none">
+                {/* Simulated Phone Status Bar exactly like screenshot */}
+                <div className="flex justify-between items-center px-3.5 pt-1.5 pb-2 text-[8px] sm:text-[9px] font-bold text-slate-400 font-sans tracking-tight shrink-0 select-none">
+                  <span>1:21</span>
+                  <div className="flex items-center gap-1 text-[8px]">
+                    {/* Signal indicators */}
+                    <span>📶</span>
+                    <span>🛜</span>
+                    <span className="bg-slate-800 text-[8px] text-slate-300 px-1 rounded-sm border border-slate-700">68</span>
+                  </div>
+                </div>
+
+                {/* Simulated Mobile Dialog content exactly representing the user's image */}
+                <div className="flex-1 bg-white rounded-t-2xl shadow-inner p-2 sm:p-3 flex flex-col gap-2 overflow-hidden text-slate-800 select-none font-sans">
+                  {/* Dialog Header */}
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-1.5 shrink-0">
+                    <div className="flex items-center gap-1">
+                      <Bell className="w-3.5 h-3.5 text-indigo-600 stroke-[2.5]" />
+                      <span className="font-extrabold text-[9.5px] sm:text-[10.5px] text-slate-900 tracking-tight">알림 내역</span>
+                    </div>
+                    <X className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                  </div>
+
+                  {/* Push Status Notice Bar */}
+                  <div className="bg-[#f0f4f8] border border-blue-100 rounded-lg p-1 text-center text-[7.5px] sm:text-[8px] leading-snug font-bold text-slate-500 shrink-0 select-none">
+                    웹 푸시 알림이 원활하게 작동 중입니다.
+                  </div>
+
+                  {/* Pinned Marker and Pinned List Title */}
+                  <div className="flex items-center gap-1.5 px-0.5 shrink-0">
+                    <span className="inline-flex items-center gap-0.5 px-1 py-0.5 rounded bg-indigo-50 border border-indigo-100 text-[#4f46e5] text-[6.5px] sm:text-[7.5px] font-black leading-none shrink-0 scale-90 origin-left">
+                      📌 고정됨
+                    </span>
+                    <span className="text-[7.5px] sm:text-[8px] font-bold text-slate-500">최근 관리자 메시지</span>
+                  </div>
+
+                  {/* Main scrolling/stacked core yellow/amber cards representing the image */}
+                  <div className="flex flex-col gap-1.5 overflow-hidden">
+                    {/* Golden Ticket 1 */}
+                    <div className="bg-amber-50/20 border-l-[3px] border-amber-400 border-t border-r border-b border-amber-200/80 p-1.5 sm:p-2 rounded-xl text-[7px] sm:text-[8px] flex flex-col justify-between shrink-0 leading-tight">
+                      <div className="font-bold text-slate-800 leading-normal line-clamp-2">
+                        [더문짐 & 그룹PT] 락카 만료 7일전입니다. 락카 연장을 희망하실경우, 인포데스크에 말씀해주세요.
+                      </div>
+                      <div className="flex justify-between items-center mt-1 scale-90 origin-bottom-left pt-0.5">
+                        <span className="text-slate-400 font-mono">2026-06-19 13:18:39</span>
+                        <span className="bg-amber-100 text-amber-700 px-1 py-0.5 rounded font-bold">공지/안내</span>
+                      </div>
+                    </div>
+
+                    {/* Golden Ticket 2 */}
+                    <div className="bg-amber-50/10 border-l-[3px] border-amber-400 border-t border-r border-b border-amber-200/70 p-1.5 sm:p-2 rounded-xl text-[7px] sm:text-[8px] flex flex-col justify-between shrink-0 leading-tight filter opacity-90">
+                      <div className="font-bold text-slate-700 leading-normal line-clamp-2">
+                        [더문짐 & 그룹PT] 6월 특가 이벤트 !! PT 10회 + 헬스권 6개월 선착순 10명 550,000원 혜택!! 문의하기 -...
+                      </div>
+                      <div className="flex justify-between items-center mt-1 scale-90 origin-bottom-left pt-0.5">
+                        <span className="text-slate-400 font-mono">2026-06-19 13:18:01</span>
+                        <span className="bg-amber-100/80 text-amber-700/90 px-1 py-0.5 rounded font-bold">공지/안내</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Smartphone bottom Home bar bar */}
+                <div className="w-16 h-1 bg-slate-800/80 rounded-full mx-auto mt-auto mb-1 shrink-0" />
+              </div>
+
+              {/* Glass Info Footer Tag */}
+              <div className="absolute inset-x-0 bottom-0 bg-[#0c1224]/85 border-t border-slate-800/80 px-5 py-2.5 flex items-center justify-between select-none">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+                  <span className="text-xs text-slate-200 font-bold">사용자 앱 / 알림 푸시 수신 (Mobile)</span>
+                </div>
+                <span className="text-[10px] text-slate-500 font-mono">알림 이력 조회 모드</span>
+              </div>
             </div>
           </motion.div>
         </section>
@@ -911,6 +1122,413 @@ export default function App() {
           </button>
         </div>
       </Modal>
+
+      {/* High-Fidelity Custom Admin Mockup Modal */}
+      <AnimatePresence>
+        {isAdminModalOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsAdminModalOpen(false)}
+              className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-[80] flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+            >
+              {/* Modal Window Container */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-[#0c1224] border border-slate-800 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl w-full max-w-5xl flex flex-col overflow-hidden max-h-[92vh]"
+              >
+                {/* Simulated Web Browser Address Header */}
+                <div className="bg-[#0b1224] border-b border-slate-800/80 px-4 sm:px-6 py-3.5 flex items-center justify-between shrink-0 select-none">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex gap-1.5 shrink-0">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                    </div>
+                    <div className="hidden sm:flex items-center gap-1.5 text-slate-500 text-xs select-none">
+                      <span className="font-bold">←</span>
+                      <span className="font-bold">→</span>
+                      <span className="font-bold">↺</span>
+                    </div>
+                    <div className="h-4 w-[1px] bg-slate-800 hidden sm:block" />
+                    <div className="bg-[#141b2e] border border-slate-800/80 rounded-xl py-1 px-3 sm:px-4 flex items-center gap-1.5 text-[10px] sm:text-xs text-slate-300 font-mono">
+                      <span className="text-emerald-400">🔒</span>
+                      <span className="font-semibold text-slate-300">app.myfitmanager.co.kr</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] sm:text-xs text-slate-500 font-medium hidden md:inline">관리자 프로그램 고화질 대시보드</span>
+                    <button 
+                      onClick={() => setIsAdminModalOpen(false)}
+                      className="bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white p-2 rounded-xl transition-all"
+                    >
+                      <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Simulated Client Application Body */}
+                <div className="flex-1 flex overflow-hidden min-h-[420px] sm:min-h-[500px]">
+                  
+                  {/* Left Sidebar Menu */}
+                  <div className="w-[180px] sm:w-[200px] bg-[#0c1121] border-r border-slate-800/80 p-4 shrink-0 flex flex-col justify-between hidden md:flex select-none">
+                    <div className="space-y-6">
+                      {/* Avatar container */}
+                      <div className="flex items-center gap-3 p-2 bg-slate-900/40 rounded-2xl border border-slate-800/50">
+                        <div className="w-8 h-8 rounded-xl bg-blue-600/30 border border-blue-500/20 flex items-center justify-center text-blue-400 font-black text-xs">
+                          My
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-xs font-bold text-white leading-none mb-1">MyFitManager</span>
+                          <span className="text-[9px] text-slate-500 font-mono">ADMIN MODE</span>
+                        </div>
+                      </div>
+
+                      {/* Menu navigation options */}
+                      <div className="space-y-1 text-slate-400 font-semibold text-xs">
+                        <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800/80 text-white font-extrabold cursor-pointer">
+                          <Activity className="w-4 h-4 text-blue-500" />
+                          대시보드
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-900/40 hover:text-slate-200 transition-colors cursor-pointer">
+                          <Users className="w-4 h-4 text-slate-500" />
+                          회원 관리
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-900/40 hover:text-slate-200 transition-colors cursor-pointer">
+                          <Ticket className="w-4 h-4 text-slate-500" />
+                          이용권 관리
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-900/40 hover:text-slate-200 transition-colors cursor-pointer">
+                          <FileText className="w-4 h-4 text-slate-500" />
+                          수업 로그 및 통계
+                        </div>
+                        <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-900/40 hover:text-slate-200 transition-colors cursor-pointer">
+                          <Lock className="w-4 h-4 text-slate-500" />
+                          권한 및 지점 설정
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-[#0f172a] p-3 rounded-xl border border-slate-800/80 text-[10px] text-slate-500 leading-normal">
+                      <span className="block font-bold text-slate-400 mb-0.5">상태: 라이브 가동 중</span>
+                      마케팅 알림 허용 여부 연동됨
+                    </div>
+                  </div>
+
+                  {/* Main Database Table Space (Left Side inside dashboard) */}
+                  <div className="flex-1 bg-[#0a0e1a] p-4 sm:p-6 overflow-y-auto flex flex-col gap-4 sm:gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        {/* Literal Breadcrumb Title */}
+                        <div className="text-[10px] sm:text-xs text-blue-500 font-bold mb-1 font-mono uppercase tracking-widest">Dashboards / Marketing Targets</div>
+                        <h2 className="text-lg sm:text-xl font-extrabold text-white flex items-center gap-2 tracking-tight">
+                          <Users className="w-5 h-5 text-blue-400" /> 마케팅 타겟 군 추출 현황
+                        </h2>
+                      </div>
+                      <div className="flex gap-2">
+                        <div className="text-[10px] sm:text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-300 font-medium select-none">
+                          필터: 만료 예정 (30일 이내)
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Members List Table exactly like dashboard list, with confidentiality blurs */}
+                    <div className="bg-slate-900/30 border border-slate-800/80 rounded-2xl overflow-hidden shadow-lg">
+                      <div className="grid grid-cols-12 gap-2 bg-[#0c1224] border-b border-slate-800 py-3 px-4 text-[10px] sm:text-xs font-black text-slate-400 tracking-tight select-none">
+                        <div className="col-span-1 text-center">선택</div>
+                        <div className="col-span-3 text-left">회원명</div>
+                        <div className="col-span-4 text-left">등록 유효 이용권 명칭</div>
+                        <div className="col-span-4 text-right">자동 추출 상태</div>
+                      </div>
+
+                      <div className="divide-y divide-slate-800/40 text-[10px] sm:text-xs">
+                        {/* Member Row 1 */}
+                        <div className="grid grid-cols-12 gap-2 py-3.5 px-4 items-center border-b border-slate-800/30">
+                          <div className="col-span-1 flex justify-center">
+                            <input type="checkbox" defaultChecked className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500" />
+                          </div>
+                          <div className="col-span-3 text-left font-bold text-white select-none">
+                            <span className="filter blur-[3px] select-none">김*준 회원</span>
+                          </div>
+                          <div className="col-span-4 text-left text-slate-300 font-medium">
+                            그룹수강권 (12개월 무제한)
+                          </div>
+                          <div className="col-span-4 text-right font-black">
+                            <span className="bg-red-500/15 text-red-500 border border-red-500/20 py-0.5 px-2 rounded-md font-sans">D-28 만료예정</span>
+                          </div>
+                        </div>
+
+                        {/* Member Row 2 */}
+                        <div className="grid grid-cols-12 gap-2 py-3.5 px-4 items-center border-b border-slate-800/30">
+                          <div className="col-span-1 flex justify-center">
+                            <input type="checkbox" defaultChecked className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500" />
+                          </div>
+                          <div className="col-span-3 text-left font-bold text-white select-none">
+                            <span className="filter blur-[3px] select-none font-sans">박*우 회원</span>
+                          </div>
+                          <div className="col-span-4 text-left text-slate-300 font-medium">
+                            추가 필라테스 (12개월)
+                          </div>
+                          <div className="col-span-4 text-right font-black">
+                            <span className="bg-red-500/15 text-red-500 border border-red-500/20 py-0.5 px-2 rounded-md font-sans">D-28 만료예정</span>
+                          </div>
+                        </div>
+
+                        {/* Member Row 3 */}
+                        <div className="grid grid-cols-12 gap-2 py-3.5 px-4 items-center border-b border-slate-800/30">
+                          <div className="col-span-1 flex justify-center">
+                            <input type="checkbox" defaultChecked className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500" />
+                          </div>
+                          <div className="col-span-3 text-left font-bold text-white select-none">
+                            <span className="filter blur-[3px] select-none">이*지 회원</span>
+                          </div>
+                          <div className="col-span-4 text-left text-slate-300 font-medium">
+                            추가 필라테스 / 재등록 체험단
+                          </div>
+                          <div className="col-span-4 text-right font-black">
+                            <span className="bg-purple-500/15 text-purple-400 border border-purple-500/20 py-0.5 px-2 rounded-md">수업 임박 (잔여 1회)</span>
+                          </div>
+                        </div>
+
+                        {/* Member Row 4 */}
+                        <div className="grid grid-cols-12 gap-2 py-3.5 px-4 items-center">
+                          <div className="col-span-1 flex justify-center">
+                            <input type="checkbox" defaultChecked className="rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500" />
+                          </div>
+                          <div className="col-span-3 text-left font-bold text-white select-none">
+                            <span className="filter blur-[3px] select-none font-sans">정*민 회원</span>
+                          </div>
+                          <div className="col-span-4 text-left text-slate-300 font-medium">
+                            그룹 수강권 (16회 PT)
+                          </div>
+                          <div className="col-span-4 text-right font-black">
+                            <span className="bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 py-0.5 px-2 rounded-md font-sans">D-23 만료예정</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Information Banner */}
+                    <div className="bg-blue-950/20 border border-blue-900/30 p-4.5 rounded-2xl flex items-start gap-3">
+                      <span className="text-blue-400 text-lg leading-none">💡</span>
+                      <p className="text-xs text-slate-300 leading-relaxed break-keep">
+                        자동 타겟팅 필터링(잔여 8회 이하 또는 잔여기간 30일 이하) 기준에 맞춰 만료가 임박한 회원이 리스팅되었습니다. 우측의 <strong>회원권 현황 상세 모달 창</strong>을 대조하여 <strong>일괄 버튼</strong>으로 클릭 한 번에 재등록 유도 혜택 알림톡을 발송하세요!
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right Slide-over Sidebar Panel (Matching the original snapshot with pristine high-fidelity detailed pixels) */}
+                  <div className="w-[320px] sm:w-[350px] bg-white text-slate-800 p-4 sm:p-5 flex flex-col justify-between shrink-0 shadow-2xl relative border-l border-slate-200 z-10 select-none">
+                    <div>
+                      {/* Original header with 28명 indicator, Send buttons, and close button */}
+                      <div className="flex items-center justify-between gap-1.5 mb-4 border-b border-slate-100 pb-3">
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+                          <span className="text-xs font-sans font-black text-red-500 bg-red-50 px-2 py-1 rounded-md leading-none select-none">28명</span>
+                          <button className="text-[10px] font-extrabold text-slate-500 bg-slate-100 hover:bg-slate-200 px-2 py-1.5 rounded transition-all">
+                            숨긴 명단 보기
+                          </button>
+                        </div>
+                        
+                        <div className="flex gap-1 items-center shrink-0">
+                          <button className="text-[10px] sm:text-[11px] bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-2.5 py-1.5 rounded-md shadow-sm shadow-blue-500/20 transition-all select-none">
+                            일괄 전송
+                          </button>
+                          <button className="text-[10px] sm:text-[11px] bg-[#059669] hover:bg-[#047857] text-white font-extrabold px-2 py-1.5 rounded-md shadow-sm shadow-emerald-500/20 transition-all select-none">
+                            SMS 일괄(유료)
+                          </button>
+                          <button 
+                            onClick={() => setIsAdminModalOpen(false)}
+                            className="text-slate-400 hover:text-slate-800 p-1 rounded-full transition-colors hidden sm:block"
+                          >
+                            <X className="w-4 h-4 stroke-[2.5]" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Header Title inside panel */}
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-[11px] text-slate-400 uppercase font-black tracking-widest">
+                          세부 소유 이용권 목록
+                        </span>
+                        <span className="text-[10.5px] cursor-pointer font-bold text-slate-400 hover:text-slate-600">숨기기</span>
+                      </div>
+
+                      {/* Stacked list of Member Pass tickets (Recreating exactly the visual aesthetic) */}
+                      <div className="flex flex-col gap-3 max-h-[350px] overflow-y-auto pr-1">
+                        {/* Ticket Card 1 */}
+                        <div className="bg-[#f8fafc] border border-slate-100 border-l-[3.5px] border-l-red-500 p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:translate-x-1 transition-transform">
+                          <div className="flex justify-between items-start gap-2 mb-1">
+                            <span className="font-sans font-black text-slate-900 text-[11px] sm:text-[11.5px] tracking-tight">그룹 수강권 (대표)</span>
+                            <div className="flex gap-1 shrink-0 flex-wrap justify-end">
+                              <span className="bg-[#e0f2fe] text-[#0369a1] text-[9.5px] font-black px-1.5 py-0.5 rounded leading-none">그룹 D-28</span>
+                              <span className="bg-[#fce7f3] text-[#be185d] text-[9.5px] font-black px-1.5 py-0.5 rounded leading-none">추가 D-28</span>
+                            </div>
+                          </div>
+                          <div className="text-slate-500 text-[11px] leading-relaxed">12개월 무제한 그룹 PT</div>
+                        </div>
+
+                        {/* Ticket Card 1-2 Overlay block */}
+                        <div className="bg-[#f8fafc] border border-slate-100 border-l-[3.5px] border-l-purple-500 p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:translate-x-1 transition-transform">
+                          <div className="flex justify-between items-start gap-2 mb-1">
+                            <span className="font-sans font-black text-slate-900 text-[11px] sm:text-[11.5px] tracking-tight">추가 그룹 수강권</span>
+                            <div className="flex gap-1 shrink-0">
+                              <span className="bg-[#f3e8ff] text-[#6b21a8] text-[9.5px] font-black px-1.5 py-0.5 rounded leading-none">추가 잔여 1회</span>
+                            </div>
+                          </div>
+                          <div className="text-slate-500 text-[11px] leading-relaxed">그룹PT 체험권 (총 1회)</div>
+                        </div>
+
+                        {/* Ticket Card 2 */}
+                        <div className="bg-[#f8fafc] border border-slate-100 border-l-[3.5px] border-l-[#3b82f6] p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:translate-x-1 transition-transform">
+                          <div className="flex justify-between items-start gap-2 mb-1">
+                            <span className="font-sans font-black text-slate-900 text-[11px] sm:text-[11.5px] tracking-tight">추가 그룹 수강권</span>
+                            <div className="flex gap-1 shrink-0">
+                              <span className="bg-[#fce7f3] text-[#be185d] text-[9.5px] font-black px-1.5 py-0.5 rounded leading-none">추가 D-28</span>
+                            </div>
+                          </div>
+                          <div className="text-slate-500 text-[11px] leading-relaxed">12개월 필라테스</div>
+                        </div>
+
+                        {/* Ticket Card 3 */}
+                        <div className="bg-[#f8fafc] border border-slate-100 border-l-[3.5px] border-l-emerald-500 p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:translate-x-1 transition-transform">
+                          <div className="flex justify-between items-start gap-2 mb-1">
+                            <span className="font-sans font-black text-slate-900 text-[11px] sm:text-[11.5px] tracking-tight">그룹 수강권 (대표)</span>
+                            <div className="flex gap-1 shrink-0">
+                              <span className="bg-[#e0f2fe] text-[#0369a1] text-[9.5px] font-black px-1.5 py-0.5 rounded leading-none">그룹 D-23</span>
+                            </div>
+                          </div>
+                          <div className="text-slate-500 text-[11px] leading-relaxed">16회 그룹PT권 (총 16회)</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom notes in white sidebar exactly matching screenshot */}
+                    <div className="border-t border-slate-100 pt-3 text-[10.5px] text-slate-400 font-sans leading-relaxed tracking-tight">
+                      잔여횟수 8회 이하 또는 잔여기간 30일 이하인 회원 목록입니다.
+                    </div>
+                  </div>
+
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* High-Fidelity Custom User App Notification Modal */}
+      <AnimatePresence>
+        {isAppModalOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsAppModalOpen(false)}
+              className="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-[80] flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+            >
+              {/* Phone Container Box */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-[#ebeff5] border border-slate-300 w-full max-w-md rounded-[2.5rem] p-3 sm:p-4 flex flex-col overflow-hidden max-h-[92vh] shadow-2xl"
+              >
+                {/* Simulated Phone Status Bar exactly like screenshot */}
+                <div className="flex justify-between items-center px-4 pt-1 pb-3 text-xs font-bold text-slate-700 font-sans tracking-tight shrink-0 select-none">
+                  <span>1:21</span>
+                  <div className="flex items-center gap-1.5 text-[11px]">
+                    {/* Signal indicators */}
+                    <span>📶</span>
+                    <span>🛜</span>
+                    <span className="bg-slate-800 text-[10px] text-white font-extrabold px-1.5 py-0.5 rounded border border-slate-700 leading-none">68</span>
+                  </div>
+                </div>
+
+                {/* Simulated Mobile Dialog content exactly representing the user's high-fidelity image */}
+                <div className="flex-1 bg-white rounded-[2rem] shadow-lg p-5 sm:p-6 flex flex-col gap-4 overflow-y-auto text-slate-800 relative">
+                  {/* Dialog Header with Purple Bell Icon */}
+                  <div className="flex items-center justify-between border-b border-slate-150 pb-3 shrink-0 select-none">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center">
+                        <Bell className="w-4.5 h-4.5 text-[#5c5cee] stroke-[2.5] animate-bounce" />
+                      </div>
+                      <span className="font-extrabold text-[#111827] text-base tracking-tight">알림 내역</span>
+                    </div>
+                    <button 
+                      onClick={() => setIsAppModalOpen(false)}
+                      className="text-slate-400 hover:text-slate-800 hover:bg-slate-100 p-1.5 rounded-full transition-all"
+                    >
+                      <X className="w-5 h-5 stroke-[2.5]" />
+                    </button>
+                  </div>
+
+                  {/* Push Status Notice Bar */}
+                  <div className="bg-[#f3f6fb] border border-slate-200/60 rounded-xl py-3 px-4 text-center text-xs font-bold text-slate-500 shrink-0 select-none leading-relaxed">
+                    웹 푸시 알림이 원활하게 작동 중입니다.
+                  </div>
+
+                  {/* Pinned Marker and Pinned List Title */}
+                  <div className="flex items-center gap-2 px-1 shrink-0 select-none">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#eef2ff] border border-[#e0e7ff] text-[#4f46e5] text-[10px] font-black tracking-tight leading-none shrink-0">
+                      📌 고정됨
+                    </span>
+                    <span className="text-xs font-extrabold text-slate-400">최근 관리자 메시지</span>
+                  </div>
+
+                  {/* Main scrolling core yellow/amber cards representing the uploaded image */}
+                  <div className="flex flex-col gap-4">
+                    {/* card 1 */}
+                    <div className="bg-[#fffbeb]/40 hover:bg-[#fffbeb]/70 border-l-[4px] border-amber-400 border-t border-r border-b border-amber-200/90 p-4 rounded-[1.25rem] shadow-[0_2px_8px_rgba(245,158,11,0.04)] tracking-tight hover:translate-x-1 transition-transform">
+                      <div className="font-bold text-[#1e293b] text-[13px] sm:text-[14px] leading-relaxed break-keep font-sans">
+                        [더문짐 & 그룹PT] 락카 만료 7일전입니다. 락카 연장을 희망하실경우, 인포데스크에 말씀해주세요.
+                      </div>
+                      <div className="flex justify-between items-center mt-3 pt-1 border-t border-amber-100/40 select-none">
+                        <span className="text-slate-400 font-mono text-xs font-medium">2026-06-19 13:18:39</span>
+                        <span className="bg-amber-100/90 text-amber-800 px-2.5 py-0.5 rounded-md font-extrabold text-[10px]">공지/안내</span>
+                      </div>
+                    </div>
+
+                    {/* card 2 */}
+                    <div className="bg-[#fffbeb]/40 hover:bg-[#fffbeb]/70 border-l-[4px] border-amber-400 border-t border-r border-b border-amber-200/90 p-4 rounded-[1.25rem] shadow-[0_2px_8px_rgba(245,158,11,0.04)] tracking-tight hover:translate-x-1 transition-transform">
+                      <div className="font-bold text-[#1e293b] text-[13px] sm:text-[14px] leading-relaxed break-keep font-sans">
+                        [더문짐 & 그룹PT] 6월 특가 이벤트 !! PT 10회 + 헬스권 6개월 선착순 10명 550,000원 혜택!! 문의하기 -&gt; 0507 1370 2206
+                      </div>
+                      <div className="flex justify-between items-center mt-3 pt-1 border-t border-amber-100/40 select-none">
+                        <span className="text-slate-400 font-mono text-xs font-medium">2026-06-19 13:18:01</span>
+                        <span className="bg-amber-100/90 text-amber-800 px-2.5 py-0.5 rounded-md font-extrabold text-[10px]">공지/안내</span>
+                      </div>
+                    </div>
+
+                    {/* card 3 */}
+                    <div className="bg-[#fffbeb]/40 hover:bg-[#fffbeb]/70 border-l-[4px] border-amber-400 border-t border-r border-b border-amber-200/90 p-4 rounded-[1.25rem] shadow-[0_2px_8px_rgba(245,158,11,0.04)] tracking-tight hover:translate-x-1 transition-transform">
+                      <div className="font-bold text-[#1e293b] text-[13px] sm:text-[14px] leading-relaxed break-keep font-sans">
+                        [더문짐 & 그룹PT] 회원권 만료 7일전 입니다. 회원권을 연장 희망시, 담당 트레이너에게 문의 부탁드립니다.
+                      </div>
+                      <div className="flex justify-between items-center mt-3 pt-1 border-t border-amber-100/40 select-none">
+                        <span className="text-slate-400 font-mono text-xs font-medium">2026-06-19 13:16:54</span>
+                        <span className="bg-amber-100/90 text-amber-800 px-2.5 py-0.5 rounded-md font-extrabold text-[10px]">공지/안내</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Smartphone bottom Home bar bar */}
+                <div className="w-24 h-1.5 bg-slate-800 rounded-full mx-auto mt-3 mb-2 shrink-0" />
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <footer className="bg-[#070b15] py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-900 relative">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
