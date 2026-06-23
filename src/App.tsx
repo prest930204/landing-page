@@ -1133,6 +1133,16 @@ export default function App() {
               <li>회원은 언제든지 위약금 없이 정기결제를 해지할 수 있습니다. 해지 시 다음 결제일부터 요금이 청구되지 않습니다.</li>
               <li>단, 이미 결제가 완료된 당월 구독료는 일할 계산하여 환불되지 않으며, 해지하더라도 다음 결제 예정일 전날까지 정상적으로 서비스를 이용할 수 있습니다.</li>
             </ul>
+            
+            <p className="font-semibold text-white mt-6">4. 미성년자 결제 보호</p>
+            <p>미성년자가 법정대리인의 동의 없이 결제한 경우, 본인 또는 법정대리인은 결제를 취소할 수 있습니다.</p>
+            
+            <p className="font-semibold text-white mt-6">5. 소비자 분쟁 및 고객센터</p>
+            <p>회사는 소비자 불만 및 분쟁 처리를 위해 고객센터를 운영합니다.</p>
+            <ul className="list-disc pl-5 space-y-1 mt-2">
+              <li>연락처: 010-4814-2206</li>
+              <li>운영시간: 평일 10:00 ~ 17:00 (주말 및 공휴일 휴무)</li>
+            </ul>
           </div>
           <button 
             onClick={() => setIsTermsModalOpen(false)}
