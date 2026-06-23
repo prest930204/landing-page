@@ -266,7 +266,7 @@ export default function App() {
   const [isAppModalOpen, setIsAppModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-blue-500/30 bg-[#0B1121] text-slate-200">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-blue-500/30 bg-[#0B1121] text-slate-200">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0B1121]/80 backdrop-blur-md border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -288,7 +288,7 @@ export default function App() {
         </div>
       </nav>
 
-      <main>
+      <main className="flex-grow">
         {/* Section 1: Hero Section */}
         <section id="hero" className="pt-36 pb-24 lg:pt-48 lg:pb-36 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-[#0a0f1d] via-[#0B1121] to-[#0B1121]">
           {/* Ambient circles with Indigo theme */}
@@ -1085,14 +1085,28 @@ export default function App() {
 
       <Modal isOpen={isPrivacyModalOpen} onClose={() => setIsPrivacyModalOpen(false)}>
         <div className="w-full max-h-[85vh] overflow-y-auto pr-2 custom-scrollbar">
-          <h3 className="text-2xl font-display font-bold mb-4 text-white">개인정보 처리방침</h3>
-          <div className="text-slate-300 space-y-4 text-sm leading-relaxed mb-8">
-            <p className="font-semibold text-white">수집하는 개인정보 항목</p>
-            <p>회사는 원활한 상담 및 서비스 제공을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br/> - 필수항목: 이름, 전화번호, 이메일, 센터명</p>
-            <p className="font-semibold text-white mt-6">개인정보의 수집 및 이용 목적</p>
-            <p>수집한 개인정보를 다음의 목적을 위해 활용합니다.<br/> - 서비스 도입 상담 및 문의 응대<br/> - 서비스 이용 안내 및 (마케팅 동의 시) 안내사항 전달</p>
-            <p className="font-semibold text-white mt-6">개인정보의 보유 및 이용 기간</p>
-            <p>원칙적으로, 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 상담 종료 후 6개월 간 보관할 수 있습니다.</p>
+          <h3 className="text-2xl font-display font-bold mb-4 text-white">개인정보처리방침</h3>
+          <div className="text-slate-300 space-y-4 text-sm leading-relaxed mb-8 break-keep">
+            <p className="font-semibold text-white">1. 개인정보 수집 목적</p>
+            <p>회원 가입 및 본인 확인, 서비스 이용 권한 부여, 개인 맞춤형 피트니스 데이터 제공을 위해 개인정보를 수집합니다.</p>
+            
+            <p className="font-semibold text-white mt-6">2. 수집하는 개인정보 항목</p>
+            <p>성명, 이메일, 휴대폰 번호, 소속 센터명, 신장, 체중, 식단 및 운동 데이터</p>
+            
+            <p className="font-semibold text-white mt-6">3. 개인정보 제3자 제공 (결제 서비스)</p>
+            <p>회사는 정기결제(자동결제) 및 일반 결제 처리를 위해 PG사((주)포트원) 및 관련 신용카드사 등에 필수적인 결제 정보를 제공합니다.</p>
+            
+            <p className="font-semibold text-white mt-6">4. 개인정보 보존 및 파기 기간</p>
+            <p>수집된 개인정보는 원칙적으로 탈퇴 시 즉시 파기합니다. 단, 전자상거래법에 따라 결제 및 재화 공급에 관한 기록은 5년간 보존합니다.</p>
+
+            <p className="font-semibold text-white mt-6">5. 정보주체의 권리</p>
+            <p>회원은 언제든지 개인정보의 열람, 정정, 삭제를 요구할 수 있습니다.</p>
+            
+            <p className="font-semibold text-white mt-6">6. 개인정보 보호책임자</p>
+            <p>
+              성명: 문준호<br />
+              이메일: <a href="mailto:prest930204@gmail.com" className="hover:text-blue-400 focus:outline-none">prest930204@gmail.com</a>
+            </p>
           </div>
           <button 
             onClick={() => setIsPrivacyModalOpen(false)}
@@ -1106,13 +1120,19 @@ export default function App() {
       <Modal isOpen={isTermsModalOpen} onClose={() => setIsTermsModalOpen(false)}>
         <div className="w-full max-h-[85vh] overflow-y-auto pr-2 custom-scrollbar">
           <h3 className="text-2xl font-display font-bold mb-4 text-white">이용약관</h3>
-          <div className="text-slate-300 space-y-4 text-sm leading-relaxed mb-8">
-            <p className="font-semibold text-white">제1조 (목적)</p>
-            <p>본 안내는 "Myfitmanager" 서비스 도입과 관련하여 기본적으로 지켜야 할 사항과 정책을 규정함을 목적으로 합니다.</p>
-            <p className="font-semibold text-white mt-6">제2조 (이용 절차)</p>
-            <p>본 서비스인 'Myfitmanager'의 도입 및 이용과 관련한 세부 사항은 문의 접수 후 상담을 거쳐 별도의 서면 계약을 통해 정립됩니다. 상담 신청란을 통해 제출된 정보는 계약 체결 및 안내의 기초 자료로 활용됩니다.</p>
-            <p className="font-semibold text-white mt-6">제3조 (책임 한계)</p>
-            <p>제공되는 기능 및 화면은 사전 공지 없이 업데이트 또는 변경될 수 있으며, 실제 서비스 제공 내용 및 결과물은 안내된 바와 다소 차이가 있을 수 있습니다.</p>
+          <div className="text-slate-300 space-y-4 text-sm leading-relaxed mb-8 break-keep">
+            <p className="font-semibold text-white">1. 목적 및 서비스 제공</p>
+            <p>본 약관은 더문랩(이하 "회사")이 제공하는 플랫폼 서비스 이용 규정을 명시합니다. 수강권 및 멤버십은 결제 완료 즉시 회원의 계정으로 전자적 방식을 통해 부여됩니다.</p>
+            
+            <p className="font-semibold text-white mt-6">2. [중요] 정기결제(자동결제) 동의</p>
+            <p>본 서비스는 월 단위 정기구독 서비스입니다. 회원이 등록한 결제 수단으로 매월 지정된 결제일에 구독료가 자동 청구 및 결제됩니다.</p>
+            
+            <p className="font-semibold text-white mt-6">3. 청약철회 및 환불 규정</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>결제일로부터 7일 이내에 서비스를 전혀 사용하지 않은 경우 전액 환불(청약철회)이 가능합니다.</li>
+              <li>회원은 언제든지 위약금 없이 정기결제를 해지할 수 있습니다. 해지 시 다음 결제일부터 요금이 청구되지 않습니다.</li>
+              <li>단, 이미 결제가 완료된 당월 구독료는 일할 계산하여 환불되지 않으며, 해지하더라도 다음 결제 예정일 전날까지 정상적으로 서비스를 이용할 수 있습니다.</li>
+            </ul>
           </div>
           <button 
             onClick={() => setIsTermsModalOpen(false)}
@@ -1530,30 +1550,68 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <footer className="bg-[#070b15] py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-900 relative">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
+      <footer className="bg-[#070b15] py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-900 relative mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+          <div className="flex flex-col gap-4 max-w-2xl">
+            <div className="flex items-center gap-2 mb-2">
                <Activity className="w-6 h-6 text-blue-500" />
-               <span className="font-display font-bold text-xl text-white">Myfitmanager</span>
+               <span className="font-display font-bold text-xl text-white tracking-tight">Myfitmanager</span>
             </div>
-            <p className="text-slate-500 text-sm max-w-sm leading-relaxed">최고의 효율과 성장을 이끄는 프리미엄 피트니스 통합 관리 파트너</p>
+            <p className="text-slate-400 text-sm leading-relaxed mb-2 font-medium">최고의 효율과 성장을 이끄는 프리미엄 피트니스 통합 관리 파트너</p>
+            
+            <div className="flex flex-col gap-1.5 text-xs text-slate-500 mt-2">
+              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1">
+                <span><strong className="text-slate-400 font-medium">상호명:</strong> 더문랩</span>
+                <span><strong className="text-slate-400 font-medium">대표자:</strong> 문준호</span>
+              </div>
+              <div>
+                <strong className="text-slate-400 font-medium">소재지:</strong> 경기도 김포시 장기동 태장로 808 송호프라자 202호
+              </div>
+              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1">
+                <span>
+                  <strong className="text-slate-400 font-medium">사업자등록번호:</strong> 344-09-03220 
+                  <a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=3440903220" target="_blank" rel="noreferrer" className="ml-1.5 text-blue-500 hover:text-blue-400 hover:underline transition-colors">
+                    [사업자정보확인]
+                  </a>
+                </span>
+                <span><strong className="text-slate-400 font-medium">통신판매업신고번호:</strong> 제 2026-경기김포-4436 호</span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1">
+                <span><strong className="text-slate-400 font-medium">대표전화:</strong> 010-4814-2206</span>
+                <span><strong className="text-slate-400 font-medium">이메일:</strong> prest930204@gmail.com</span>
+              </div>
+            </div>
           </div>
           
-          <div className="flex flex-wrap sm:flex-nowrap gap-6 sm:gap-10 text-sm font-medium text-slate-400">
-            <a href="#hero" className="hover:text-white transition-colors whitespace-nowrap">소개</a>
-            <a href="#features" className="hover:text-white transition-colors whitespace-nowrap">주요 기능</a>
-            <a href="#contact" className="hover:text-white transition-colors whitespace-nowrap">도입 문의</a>
-            <button onClick={() => setIsPrivacyModalOpen(true)} className="hover:text-white transition-colors whitespace-nowrap cursor-pointer">개인정보 처리방침</button>
-            <button onClick={() => setIsTermsModalOpen(true)} className="hover:text-white transition-colors whitespace-nowrap cursor-pointer">이용약관</button>
+          <div className="flex flex-col items-start md:items-end gap-6 text-sm font-medium">
+            <div className="flex flex-wrap sm:flex-nowrap gap-6 sm:gap-8 text-slate-400">
+              <a href="#hero" className="hover:text-white transition-colors whitespace-nowrap">소개</a>
+              <a href="#ai-routine" className="hover:text-white transition-colors whitespace-nowrap">주요 기능</a>
+              <a href="#contact" className="hover:text-white transition-colors whitespace-nowrap">도입 문의</a>
+            </div>
+            <div className="flex flex-wrap gap-4 mt-2">
+              <button 
+                onClick={() => setIsTermsModalOpen(true)} 
+                className="text-slate-300 hover:text-white font-bold transition-colors whitespace-nowrap cursor-pointer hover:underline underline-offset-4"
+              >
+                이용약관
+              </button>
+              <span className="text-slate-700">|</span>
+              <button 
+                onClick={() => setIsPrivacyModalOpen(true)} 
+                className="text-slate-300 hover:text-white font-bold transition-colors whitespace-nowrap cursor-pointer hover:underline underline-offset-4"
+              >
+                개인정보처리방침
+              </button>
+            </div>
           </div>
         </div>
         
         <div className="max-w-7xl mx-auto w-full h-[1px] bg-slate-800/60 my-8" />
         
         <div className="max-w-7xl mx-auto">
-          <p className="text-sm text-slate-600 text-center md:text-left">
-            &copy; {new Date().getFullYear()} Myfitmanager Inc. All rights reserved.
+          <p className="text-xs text-slate-600 text-center md:text-left">
+            &copy; {new Date().getFullYear()} 더문랩 (Myfitmanager). All rights reserved.
           </p>
         </div>
       </footer>
